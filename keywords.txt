@@ -1,0 +1,3 @@
+Eeprm		KEYWORD1
+writedata	KEYWORD2
+readdata	KEYWORD2
