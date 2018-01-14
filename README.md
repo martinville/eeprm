@@ -1,4 +1,4 @@
-# eeprm
+# eeprm - for Arduino
 
   Eeprm - Library for writing complete strings to flash memory in segments.
   Created by Martin Viljoen 2018/01/14.
