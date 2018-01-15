@@ -37,16 +37,8 @@ void Eeprm::writedata(int field,String datatowrite )
   String CurCharacter;
   char CharConv;
   int CurASCIICode;  
-  if (field==1){field=0;}
-  if (field==2){field=20;}
-  if (field==3){field=40;}
-  if (field==4){field=60;}
-  if (field==5){field=80;}
-  if (field==6){field=100;}
-  if (field==7){field=120;}
-  if (field==8){field=140;}
-  if (field==9){field=160;}
-  if (field==10){field=180;}
+  field = (field-1)*20;
+
   datatowrite=datatowrite+"~~~~~~~~~~~~~~~~~~~~";  
    for (i=0; i <= 19; i++)
    {
@@ -58,22 +50,15 @@ void Eeprm::writedata(int field,String datatowrite )
 }
 String Eeprm::readdata(int field)
 {
-  String Datatoread="";
-  if (field==1){field=0;}
-  if (field==2){field=20;}
-  if (field==3){field=40;}
-  if (field==4){field=60;}
-  if (field==5){field=80;}
-  if (field==6){field=100;}
-  if (field==7){field=120;}
-  if (field==8){field=140;}
-  if (field==9){field=160;}
-  if (field==10){field=180;}
+  String dataToRead  ="";
+  int val;
+  field = (field-1)*20;
   int i; 
    for (i=field; i <= field+19; i++)
    {    
-    if(EEPROM.read(i)==126){break;}
-    Datatoread += char(EEPROM.read(i));
+    val=EEPROM.read(i);
+	if(val==126){break;}
+    dataToRead   += char(val);
    } 	
-return Datatoread;
+return dataToRead  ;
 }
